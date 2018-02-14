@@ -16,7 +16,16 @@ class TamagotchisController < ApplicationController
 
   def update
     @tamagotchi = Tamagotchi.find(params[:id])
-    @tamagotchi.update(tamagotchi_params)
+
+    # byebug
+    if params[:bump] == "love"
+      @tamagotchi.love =  @tamagotchi.love + 1
+    elsif params[:bump] == "strength"
+      @tamagotchi.strength = @tamagotchi.strength + 1
+    end
+
+    @tamagotchi.save
+
     render json: @tamagotchi
   end
 
@@ -27,6 +36,6 @@ class TamagotchisController < ApplicationController
 
   private
   def tamagotchi_params
-    params.require(:tamagotchi).permit(:love, :strength, :name, :owner, :age)
+    params.require(:tamagotchi).(:love, :strength, :name, :owner, :age)
   end
 end

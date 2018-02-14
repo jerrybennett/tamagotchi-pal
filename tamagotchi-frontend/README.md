@@ -18,6 +18,41 @@ Your tasks include the following:
 
 ## Implementation Notes
 
+### Cards Look
+We will be using Semantic UI to build out our pretty view. Take this base for each card
+and you can use this to render the view. Think about what can we do with this HTML **string**. Fill out the appropriate fields with `()`. Be sure to attached the appropriate
+clicks as well.
+
+```html
+<div class="ui raised card">
+  <div class="content">
+    <div class="header">
+      (Tamagotchi Name)
+    </div>
+    <div class="meta">
+      <span>Owner: (Tamagotchi Owner)</span>
+      <span>(Tamagotchi Age)</span>
+    </div>
+    <div class="description">
+      <div id="ui strength">
+        Strength: (Tamagotchi Strength)
+      </div>
+      <div class="ui love">
+        Love: (Tamagotchi Love)
+      </div>
+    </div>
+  </div>
+  <div class="extra content">
+    <div class="left floated">
+      <div class="ui green button">Exercise</div>
+    </div>
+    <div class="right floated">
+      <div class="ui red button">Give Love</div>
+    </div>
+  </div>
+</div>
+```
+
 ### The API
 You will be able to run the backend API on your own system. You will make sure to have a
 terminal window open and in the `tamagotchi-backend` folder. You will need to be sure to:
@@ -64,13 +99,13 @@ GET 'http://localhost:3000/tamagotchis'
 
 #### PATCH `/tamagotchis/:id`
 This is how you will be able to update their `love` or `strength`. This request
-can take either `love` or `strength` as a parameter but we **cannot** put both. The
+can take either `love` or `strength` within the body but we **cannot** put both. The
 love button should align to increasing love **by 1** and the exercise button should
-align to increase strength **by 1**
+align to increase strength **by 1**.
 
 ```
 # Example Request
-POST 'http://localhost:3000/tamagotchis/35'
+PATCH 'http://localhost:3000/tamagotchis/35'
 
 Required Headers
 {
@@ -79,7 +114,7 @@ Required Headers
 
 Required Body
 {
-  "love": 21
+  "bump": "love"
 }
 
 # Example Response
@@ -106,7 +141,7 @@ Required Headers
 
 Required Body
 {
-  "strength": 16
+  "bump": "strength"
 }
 
 # Example Response
@@ -121,24 +156,3 @@ Required Body
 	"updated_at": "2018-02-14T16:38:50.692Z"
 }
 ```
-
-
-<!--
-#### GET `/tamagotchis/:id`
-You will get a tamagotchi **by its id**.
-```
-# Example Request
-GET 'http://localhost:3000/tamagotchis/35'
-
-# Example Response
-{
-  "id":35,
-  "name":"Steven",
-  "owner":"Adam",
-  "age":8,
-  "love":20,
-  "strength":15,
-  "created_at":"2018-02-14T15:24:44.768Z",
-  "updated_at":"2018-02-14T15:24:44.768Z"
-}
-``` -->
