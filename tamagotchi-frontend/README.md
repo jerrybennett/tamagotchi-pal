@@ -8,7 +8,7 @@ there you will need to recreate it.
 
 ## Example
 
-<!--  TODO EXAMPLE -->
+
 
 ## Deliverables
 Your tasks include the following:
@@ -132,7 +132,7 @@ Required Body
 
 ```
 # Example Request
-POST 'http://localhost:3000/tamagotchis/35'
+PATCH 'http://localhost:3000/tamagotchis/35'
 
 Required Headers
 {
